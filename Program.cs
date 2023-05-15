@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace didaticos.redimencionador
 {
@@ -6,14 +7,27 @@ namespace didaticos.redimencionador
     {
         static void Main(string[] args)
         {
-            Pessoa ananias = new Pessoa ("ananias", 31, 80, 1.67);
+            Pessoa ananias = new Pessoa ("lorenzo", 5, 25, 0.67);
+
 
             Console.WriteLine ($"eu sou {ananias.Name} e tenho {ananias.Idade}" +
                 $" anos nasci no " +
                 $"ano de {ananias.calculaAno(ananias.Idade, false)} e meu imc é " +
                 $"{ananias.calculaImc(ananias.Peso,ananias.Altura)}" +
                 $" minha força é {ananias.calcPower(ananias.Idade)}");
+            foreach (var item in ananias.numeros)
+            {
+                Console.WriteLine(item);
+
+            }
+
+
+            Console.Read();
+            
+
+
         }
+        
     }
 }
 class Pessoa
@@ -23,14 +37,26 @@ class Pessoa
     public int Peso { get; set;}
     public double Altura { get; set;}
 
+    public List<int> numeros { get; set;}
+
+
+
     public Pessoa(string name, int idade, int peso, double altura)
     {
-    Name = name;
-    Idade = idade;
-    Peso = peso;
-    Altura = altura;
 
-    
+        Name = name;
+        Idade = idade;
+        Peso = peso;
+        Altura = altura;
+
+        numeros = new List<int>();
+        for (int i = 0; i < 10; i++)
+        {
+            numeros.Add(i);
+
+        }
+
+
     }
     public int calculaAno(int idade, bool aniversario)
     {
@@ -65,6 +91,11 @@ class Pessoa
         }
         return força;
     }
+
+        
+        
+    
+
 
 
 }
